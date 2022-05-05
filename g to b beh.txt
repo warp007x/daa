@@ -1,0 +1,35 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity design_beh is
+    Port ( g : in  STD_LOGIC_VECTOR (3 downto 0);
+           b : inout  STD_LOGIC_VECTOR (3 downto 0));
+end design_beh;
+
+architecture Behavioral of design_beh is
+
+begin
+process(g,b)
+begin
+b(3)<=g(3);
+for i in 2 downto 0 loop
+	if(b(i+1)=g(i)) then
+	b(i)<='0';
+	else
+	b(i)<='1';
+	end if;
+end loop;
+
+end process;
+
+end Behavioral;
+

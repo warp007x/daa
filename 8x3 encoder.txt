@@ -1,0 +1,37 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity design8x3 is
+    Port ( i : in  STD_LOGIC_VECTOR (7 downto 0);
+           e : out  STD_LOGIC_VECTOR (2 downto 0));
+end design8x3;
+
+architecture Behavioral of design8x3 is
+
+begin
+
+PROCESS(i)
+
+Variable s:std_logic_vector(2 downto 0);
+
+begin
+	for j in 0 to 7 loop
+		if(i(j)='1')then
+			s:=conv_std_logic_vector(j,3);
+		end if;
+	end loop;
+e<=s;
+end process;
+
+end Behavioral;
